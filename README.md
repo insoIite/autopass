@@ -1,21 +1,16 @@
-Goal
-----
+Requirements
+------------
+  * gopass is installed
 
-As a developer I want to auto enter password from keepassx database.
+Installing gopass (debian/ubuntu)
+-----------------
+From [https://github.com/gopasspw/gopass/blob/master/docs/setup.md#ubuntu--debian-1]
 
-AC
---
+```bash
+wget -q -O- https://api.bintray.com/orgs/gopasspw/keys/gpg/public.key | sudo apt-key add -
+echo "deb https://dl.bintray.com/gopasspw/gopass trusty main" | sudo tee /etc/apt/sources.list.d/gopass.list
 
-  * Password are still manually added to keepassx
-  * Program automatically take in account new password added
-  * Works with multiple keepass databases
-  * We can auto enter password for shell, ssh, gpg, web formular (login, etc...)
+sudo apt-get update
+sudo apt-get install gopass
+```
 
-Design
-------
-As keepass has no API or command cli in order to do it, we will use `gopass` to store our passwords
-
-  * gopass have to synchronise from many keepass database
-  * gopass architecture is done correctly (name / folder /entries)
-  * We can find a password entry by search feature with a dmenu, rofi or other
-  * Enter password into stdin
