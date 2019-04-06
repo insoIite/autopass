@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-
 import subprocess
 
 GOPASS = '/usr/local/bin/gopass'
+
 def list_passwords():
     """
     List gopass entries
@@ -40,7 +40,8 @@ def get_fields(entry):
     res = {}
     output = subprocess.check_output(cmd)
     for line in output.decode().split('\n'):
-        if ':' not in line:
+        # Check for password line but it can contains ':' char
+        if ': ' not in line:
             res['pass'] = line
             continue
         sp = line.split(':')
@@ -59,17 +60,17 @@ def get_entry():
     out, _ = rofi.communicate(input=passwords)
     return out.decode().rstrip()
 
-def get_targeted_window():
-    """
-    Return the currently focused window
-    """
-    return subprocess.check_output(['/usr/bin/xdotool', 'getwindowfocus']).decode().rstrip()
 
-
-def get_autotype_command(entry, fields):
+def get_autotype_command(entry):
     """
+    Define what autotype to perform.
+    An autotype is the list of operation to perform
+    such as; [Enter Username, Perform a tab, Entrer password, Perform return]
+    :entry: A go pass entry
+    :ptype: str
     """
     autotype = ['user', '!Tab', 'pass']
+    fields = get_fields(entry)
 
     if 'ssh' in entry:
         autotype = ['pass', 'Return']
@@ -83,6 +84,7 @@ def get_autotype_command(entry, fields):
 
 def do_type():
     """
+    Perform the autotype
     """
     entry = get_entry()
     fields = get_fields(entry)
