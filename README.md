@@ -1,16 +1,19 @@
-Requirements
-------------
+#Autopass
+
+Autopass is a tool that allow you to automatically type your secrets.
+Secrets can be user/password of a websites, a ssh password, etc ...
+
+Linux (debian/ubuntu)
+---------------------
   * gopass is installed
+  * [rofi](https://github.com/davatorium/rofi)
+  * python3 is installed
 
-Installing gopass (debian/ubuntu)
------------------
-From [https://github.com/gopasspw/gopass/blob/master/docs/setup.md#ubuntu--debian-1]
+Windows
+-------
 
-```bash
-wget -q -O- https://api.bintray.com/orgs/gopasspw/keys/gpg/public.key | sudo apt-key add -
-echo "deb https://dl.bintray.com/gopasspw/gopass trusty main" | sudo tee /etc/apt/sources.list.d/gopass.list
+  * powershell
+  *
 
-sudo apt-get update
-sudo apt-get install gopass
-```
+
 
