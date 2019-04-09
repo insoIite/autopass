@@ -1,7 +1,13 @@
 #!/usr/bin/python3
+import os
 import subprocess
+import sys
 
-GOPASS = '/usr/local/bin/gopass'
+GOPASS = os.getenv("GOPASS_PATH")
+if not GOPASS:
+    print("Env var GOPASS_PATH must be set")
+    sys.exit(1)
+
 
 def list_passwords():
     """
