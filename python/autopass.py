@@ -72,7 +72,7 @@ def get_autotype_command(entry, fields):
     autotype = ['user', '!Tab', 'pass']
 
     if 'ssh' in entry:
-        autotype = ['pass', 'Return']
+        autotype = ['pass', '!Return']
     elif 'website' in entry and 'autotype' in fields:
         if 'autotype' in fields:
             autotype = [value for value in fields['autotype'].split(' ')]
