@@ -61,7 +61,7 @@ def get_entry():
     return out.decode().rstrip()
 
 
-def get_autotype_command(entry):
+def get_autotype_command(entry, fields):
     """
     Define what autotype to perform.
     An autotype is the list of operation to perform
@@ -70,7 +70,6 @@ def get_autotype_command(entry):
     :ptype: str
     """
     autotype = ['user', '!Tab', 'pass']
-    fields = get_fields(entry)
 
     if 'ssh' in entry:
         autotype = ['pass', 'Return']
@@ -79,7 +78,7 @@ def get_autotype_command(entry):
             autotype = [value for value in fields['autotype'].split(' ')]
     else:
         if 'autotype' in fields:
-            autotype = [fields[value] for value in fields]
+            autotype = fields['autotype'].split(' ')
     return autotype
 
 def do_type():
