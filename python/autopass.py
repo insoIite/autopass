@@ -102,9 +102,6 @@ def do_type():
         else:
             cmds.append(['xdotool', 'type', fields[val]])
 
-    if 'confirm' not in fields or fields['confirm']:
-        cmds.append(['xdotool', 'key', 'Return'])
-
     for cmd in cmds:
         subprocess.check_call(cmd)
 
