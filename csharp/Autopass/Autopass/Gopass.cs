@@ -10,7 +10,6 @@ namespace Autopass
 {
     class Gopass
     {
-
         public Gopass()
         { }
 
@@ -56,10 +55,10 @@ namespace Autopass
                     var cmd = _opt.Contains("Return") ? "{ENTER}" : "{TAB}";
                     SendKeys.SendWait(cmd);
                     Thread.Sleep(100);
-
                 }
                 else
                 {
+                    // Should not happened
                     SendKeys.Send(opt);
                 }
             }
