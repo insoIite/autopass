@@ -46,7 +46,6 @@
             this.passwordsList.TabIndex = 0;
             this.passwordsList.UseCompatibleStateImageBehavior = false;
             this.passwordsList.View = System.Windows.Forms.View.Details;
-            this.passwordsList.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.passwordsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             // 
             // passwordHeader
