@@ -27,8 +27,9 @@ namespace Autopass
             }
         }
 
-        public void typeEntry(Hashtable passwordEntry)
+        public void typeEntry(String entry)
         {
+            Hashtable passwordEntry = this.getPasswordEntryHashTable(entry);
             String autoTypeOpts = (String)passwordEntry["autotype"];
             var autoTypeOptList = autoTypeOpts.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             // Windows doesn't handle 2 focus at a time
@@ -58,8 +59,13 @@ namespace Autopass
                 }
                 else
                 {
-                    // Should not happened
-                    SendKeys.Send(opt);
+                    MessageBox.Show(
+                        "Failed to autotype",
+                        "Autopass",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    Application.Exit();
                 }
             }
         }
