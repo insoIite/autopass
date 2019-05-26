@@ -1,4 +1,4 @@
-#Autopass
+# Autopass
 
 Autopass is a tool that allow you to automatically type your secrets.
 Secrets can be user/password of a websites, a ssh password, etc ...
