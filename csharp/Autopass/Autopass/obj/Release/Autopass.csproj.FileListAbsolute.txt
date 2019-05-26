@@ -7,3 +7,4 @@ C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.cspr
 C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.exe
 C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.pdb
 C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.Autopass.resources
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.csprojAssemblyReference.cache

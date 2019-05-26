@@ -32,7 +32,7 @@ def get_fields(entry):
     aDummyPasswordXNOCGHZOIDHAO
     comment:
     url: fdu.com
-    username: dugast.fabien@gmail.com
+    user: dugast.fabien@gmail.com
 
     return:
     {
