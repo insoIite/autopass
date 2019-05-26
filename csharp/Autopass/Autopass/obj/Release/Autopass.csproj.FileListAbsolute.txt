@@ -1,0 +1,9 @@
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\bin\Release\Autopass.exe.config
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\bin\Release\Autopass.exe
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\bin\Release\Autopass.pdb
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.Properties.Resources.resources
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.csproj.GenerateResource.cache
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.csproj.CoreCompileInputs.cache
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.exe
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.pdb
+C:\Users\fdugast\git\autopass\csharp\Autopass\Autopass\obj\Release\Autopass.Autopass.resources

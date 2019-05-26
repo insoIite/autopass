@@ -1,6 +1,6 @@
 ﻿namespace Autopass
 {
-    partial class Form1
+    partial class Autopass
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Drawing;
-using System.Collections;
 
 //TODO Use env var for gopass path if it is not in $PATH
 
 namespace Autopass
 {
-    public partial class Form1 : Form
+    public partial class Autopass : Form
     {
         Gopass gopass;
-        public Form1()
+        public Autopass()
         {
             this.gopass = new Gopass();
             InitializeComponent();
