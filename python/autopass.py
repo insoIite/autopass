@@ -30,15 +30,14 @@ def get_fields(entry):
     Example
     go pass show entry:
     aDummyPasswordXNOCGHZOIDHAO
-    comment:
-    url: fdu.com
-    user: dugast.fabien@gmail.com
+    url: www.deezer.com
+    user: my_name@gmail.com
 
     return:
     {
         'pass': 'aDummyPasswordXNOCGHZOIDHAO',
-        'user': 'dugast.fabien@gmail.com',
-        'url': 'fdu.com,
+        'user': 'my_name@gmail.com',
+        'url': 'www.deezer.com,
         'comment': ''
     }
     """
@@ -75,16 +74,9 @@ def get_autotype_command(entry, fields):
     :entry: A go pass entry
     :ptype: str
     """
-    autotype = ['user', '!Tab', 'pass']
-
-    if 'ssh' in entry:
-        autotype = ['pass', '!Return']
-    elif 'website' in entry and 'autotype' in fields:
-        if 'autotype' in fields:
-            autotype = [value for value in fields['autotype'].split(' ')]
-    else:
-        if 'autotype' in fields:
-            autotype = fields['autotype'].split(' ')
+    autotype = ['user', '!Tab', 'pass', '!Return']
+    if 'autotype' in fields:
+        autotype = fields['autotype'].split(' ')
     return autotype
 
 def do_type():
