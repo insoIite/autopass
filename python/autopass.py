@@ -2,6 +2,7 @@
 import os
 import subprocess
 import sys
+import time
 
 GOPASS = os.getenv("GOPASS_PATH")
 if not GOPASS:
@@ -56,36 +57,54 @@ def get_fields(entry):
 def get_entry():
     """
     Get an entry from password list stored in gopass using rofi
-    :return: An entry from the password list
-    :rtype: str
+    :return: A set containing rofi return code and an entry from the password list
+    :rtype: set
+
+    -kb-custom-1 Controle+Return allow will change the return code of rofi
+    therefore we can have different behaviors depending on what we type in rofi
+    exit code = kb-custom value +10 -1
+    e.g: If we type Control+C that is binded to -kb-custom-1 the rofi exit code will be:
+    10
     """
     passwords = list_passwords()
-    cmd = ["rofi", "-sync", "-no-auto-select", "-i", "-dmenu", "-p", "pass: "]
+    cmd = [
+            "rofi", "-sync", "-no-auto-select",
+            "-i", "-dmenu",
+            "-kb-accept-custom", "", "-kb-custom-1", "Control+Return",
+            "-p", "pass: "
+          ]
     rofi = subprocess.Popen(cmd, stdout=subprocess.PIPE, stdin=subprocess.PIPE)
     out, _ = rofi.communicate(input=passwords)
-    return out.decode().rstrip()
+    return (rofi.poll(), out.decode().rstrip())
 
 
-def get_autotype_command(entry, fields):
+def get_autotype_command(rc, entry, fields):
     """
     Define what autotype to perform.
     An autotype is the list of operation to perform
     such as; [Enter Username, Perform a tab, Entrer password, Perform return]
+    :rc: The rofi return code
     :entry: A go pass entry
     :ptype: str
     """
-    autotype = ['user', '!Tab', 'pass', '!Return']
-    if 'autotype' in fields:
-        autotype = fields['autotype'].split(' ')
+    if rc == 0:
+        autotype = ['user', '!Tab', 'pass', '!Return']
+        if 'autotype' in fields:
+            autotype = fields['autotype'].split(' ')
+    elif rc == 10:
+        autotype = ['pass', '!Return']
+        # to improve:
+        if 'ctr_autotype' in fields:
+            autotype = fields['autotype'].split(' ')
     return autotype
 
 def do_type():
     """
     Perform the autotype
     """
-    entry = get_entry()
+    rc, entry = get_entry()
     fields = get_fields(entry)
-    autotype = get_autotype_command(entry, fields)
+    autotype = get_autotype_command(rc, entry, fields)
 
     cmds = []
     for val in autotype:
@@ -95,6 +114,7 @@ def do_type():
             cmds.append(['xdotool', 'type', fields[val]])
 
     for cmd in cmds:
+        time.sleep(0.5)
         subprocess.check_call(cmd)
 
 if __name__ == '__main__':
