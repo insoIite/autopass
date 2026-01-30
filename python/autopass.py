@@ -48,6 +48,8 @@ def get_fields(entry):
     for line in output.decode().split('\n'):
         # Check for password line but it can contains ':' char
         if ': ' not in line:
+            if not len(line):
+                continue
             res['pass'] = line
             continue
         sp = line.split(':')
