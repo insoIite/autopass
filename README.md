@@ -21,16 +21,23 @@ Then the program will:
   * Type the 'pass' key value (previously set by the application)
   * Type the Enter/Return key
 
-## Linux (debian/ubuntu)
+## Linux (Wayland, wlroots compositors such as Sway)
 ### Requirements
-  * gopass is installed and GOPASS_PATH env var is set
-  * [rofi](https://github.com/davatorium/rofi) is installed
-  * python3 is installed
+  * python3
+  * gopass, in `$PATH` or pointed to by the `GOPASS_PATH` env var
+  * [wofi](https://hg.sr.ht/~scoopta/wofi) to pick the entry
+  * [wtype](https://github.com/atx/wtype) to type it (`sudo apt install wtype`)
+  * optionally `notify-send` to get error notifications
 
 ### Usage
-  * Launch script with dmenu or from the consle
-  * Search your entry
-  * Type enter
+  * `autopass.py` types the `autotype` sequence of the entry (default: `user !Tab pass !Return`)
+  * `autopass.py --mode pass` types the `pass_autotype` sequence (default: `pass !Return`)
+
+Example Sway bindings:
+```
+bindsym $mod+p exec ~/projects/perso/autopass/python/autopass.py
+bindsym $mod+Shift+p exec ~/projects/perso/autopass/python/autopass.py --mode pass
+```
 
 ##Windows
 ### Requirements
